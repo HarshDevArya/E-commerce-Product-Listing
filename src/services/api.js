@@ -1,5 +1,5 @@
-const API_BASE_URL = "http://localhost/EcommerceBK/api";
-// const API_BASE_URL = "https://ecommercebk.lovestoblog.com/EcommerceBK/api";
+// const API_BASE_URL = "http://localhost/EcommerceBK/api";
+const API_BASE_URL = "https://ecommercebk.lovestoblog.com/EcommerceBK/api";
 
 export const fetchProducts = async (params = {}) => {
   console.log("this is params", params);
