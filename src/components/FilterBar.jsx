@@ -10,19 +10,26 @@ export default function FilterBar({ onFilterChange }) {
   // };
   const handleFilterChange = () => {
     const filters = {};
-    // Only add minPrice if provided
+
     if (minPrice.trim() !== "") {
       filters.minPrice = parseFloat(minPrice);
     }
-    // Only add maxPrice if provided
+
     if (maxPrice.trim() !== "") {
       filters.maxPrice = parseFloat(maxPrice);
     }
-    // Add sortOrder regardless (or you could also conditionally add it)
+
     if (sortOrder.trim() !== "") {
       filters.sortOrder = sortOrder;
     }
     onFilterChange(filters);
+  };
+
+  // Function to prevent invalid key inputs
+  const handleKeyDown = (e) => {
+    if (["e", "E", "+", "-"].includes(e.key)) {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -35,6 +42,7 @@ export default function FilterBar({ onFilterChange }) {
             placeholder="Min Price"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="col-md-3">
@@ -44,6 +52,7 @@ export default function FilterBar({ onFilterChange }) {
             placeholder="Max Price"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="col-md-3">
